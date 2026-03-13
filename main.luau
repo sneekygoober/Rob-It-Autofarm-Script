@@ -174,6 +174,7 @@ return function(rejoined: boolean)
 
     task.spawn(function()
         Skip:FireServer();
+        task.wait(5);
         while task.wait() do
             local char = plr.Character;
             local h = char and char:FindFirstChildOfClass("Humanoid") or nil;
