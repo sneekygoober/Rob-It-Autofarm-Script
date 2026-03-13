@@ -146,6 +146,15 @@ return function(rejoined: boolean)
         end;
     end;
 
+    local finish = function(h: Humanoid, r: BasePart)
+        print("Finished")
+        local seat = Truck:QueryDescendants("Seat")[1];
+        to(h, r, CFrame.new(TouchPart.Position));
+        h:MoveTo(seat.Position, seat);
+        h.MoveToFinished:Wait();
+        seat:Sit(h);
+    end;
+
     local earlyStop = false;
 
     Start.OnClientInvoke = function()
@@ -191,6 +200,11 @@ return function(rejoined: boolean)
                 continue;
             end;
             timeout = 1;
+
+            if h.Health <= 15 then
+                finish(h, r);
+                break;
+            end;
 
             if Cashiers then
                 for _, v: Model in next, Cashiers:GetChildren() do
@@ -255,7 +269,7 @@ return function(rejoined: boolean)
             for _, v: Model | BasePart in next, StealableItems:QueryDescendants("Model, BasePart") do
                 if earlyStop then break; end;
 
-                local prompt = v:FindFirstChildOfClass("ProximityPrompt")
+                local prompt = v:FindFirstChild("Prompt")
                 if not prompt then continue; end;
 
                 local part = v.ClassName == "Model" and v.PrimaryPart or v;
@@ -315,12 +329,7 @@ return function(rejoined: boolean)
             end;
 
             if (#StealableItems:GetChildren() <= 1 and #Natural:GetChildren() <= 0) or earlyStop then
-                print("Finished")
-                local seat = Truck:QueryDescendants("Seat")[1];
-                to(h, r, CFrame.new(TouchPart.Position));
-                h:MoveTo(seat.Position, seat);
-                h.MoveToFinished:Wait();
-                seat:Sit(h);
+                finish(h, r);
                 break;
             end;
         end;
