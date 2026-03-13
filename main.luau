@@ -1,3 +1,5 @@
+if not game:IsLoaded() then game.Loaded:Wait(); end;
+
 local cloneref = cloneref or function(i: Instance) return i; end;
 local _ = cloneref(game:GetService("CoreGui"));
 local hui = _:FindFirstChild("RobloxGui") or _;
