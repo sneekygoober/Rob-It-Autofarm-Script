@@ -269,7 +269,7 @@ return function(rejoined: boolean)
             for _, v: Model | BasePart in next, StealableItems:QueryDescendants("Model, BasePart") do
                 if earlyStop then break; end;
 
-                local prompt = v:FindFirstChild("Prompt")
+                local prompt = v:FindFirstChildOfClass("ProximityPrompt");
                 if not prompt then continue; end;
 
                 local part = v.ClassName == "Model" and v.PrimaryPart or v;
