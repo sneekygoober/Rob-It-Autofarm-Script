@@ -51,7 +51,7 @@ if not (class and Progress and Map and Remotes and Utilities and Start and HC an
     return warn(err);
 end;
 
-return function(rejoined: boolean?)
+return function(rejoined: boolean)
     if rejoined then
         task.wait(10);
     end;
