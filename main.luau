@@ -148,7 +148,7 @@ return function(rejoined: boolean)
 
     local finish = function(h: Humanoid, r: BasePart)
         print("Finished")
-        local seat = Truck:QueryDescendants("Seat")[1];
+        local seat = Truck:FindFirstChildWhichIsA("Seat", true);
         to(h, r, CFrame.new(TouchPart.Position));
         h:MoveTo(seat.Position, seat);
         h.MoveToFinished:Wait();
@@ -226,7 +226,7 @@ return function(rejoined: boolean)
                 for _, v: Model in next, ATMs:GetChildren() do
                     if earlyStop then break; end;
 
-                    local prompt = v:QueryDescendants("ProximityPrompt")[1];
+                    local prompt = v:FindFirstChildWhichIsA("ProximityPrompt", true);
                     local Screen: BasePart = v:FindFirstChild("Screen");
                     if not (prompt and Screen) or Screen.Color ~= Color3.fromRGB(190, 104, 98) then continue; end;
                     print(prompt:GetFullName());
