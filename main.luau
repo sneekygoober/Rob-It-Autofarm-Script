@@ -201,7 +201,7 @@ return function(rejoined: boolean)
             end;
             timeout = 1;
 
-            if h.Health <= 15 then
+            if h.Health <= 25 then
                 finish(h, r);
                 break;
             end;
