@@ -8,11 +8,6 @@ local SG = loadstring(game:HttpGet("https://raw.githubusercontent.com/sneekygoob
 local get_id = loadstring(game:HttpGet("https://raw.githubusercontent.com/sneekygoober/sneeky-s-fov-lib/refs/heads/main/get_id.luau"))();
 local discord_link = "https://discord.gg/" .. loadstring(game:HttpGet("https://raw.githubusercontent.com/sneekygoober/sneeky-s-fov-lib/refs/heads/main/info.luau"))().discord_link;
 
-if workspace:FindFirstChild("QueuePads") or workspace:FindFirstChild("QueueSystem") then
-    SG["info"]("You can't execute the autofarm in the lobby! You can only execute it if you're in an actual game!");
-    return;
-end;
-
 local Players: Players = cloneref(game:GetService("Players"));
 local RS: ReplicatedStorage = cloneref(game:GetService("ReplicatedStorage"));
 local RunService: RunService = cloneref(game:GetService("RunService"));
@@ -23,6 +18,11 @@ local bp: Backpack = plr.Backpack;
 local pg = plr.PlayerGui;
 
 return function(rejoined: boolean)
+    if workspace:FindFirstChild("QueuePads") or workspace:FindFirstChild("QueueSystem") then
+        SG["info"]("You can't execute the autofarm in the lobby! You can only execute it if you're in an actual game!");
+        return;
+    end;
+
     if rejoined then
         task.wait(15);
     end;
