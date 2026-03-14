@@ -206,6 +206,13 @@ return function(rejoined: boolean)
                 break;
             end;
 
+            local c = h:GetPropertyChangedSignal("Health"):Connect(function()
+                if h.Health <= 25 then
+                    finish(h, r);
+                    coroutine.yield();
+                end;
+            end);
+
             if Cashiers then
                 for _, v: Model in next, Cashiers:GetChildren() do
                     if earlyStop then break; end;
@@ -327,6 +334,9 @@ return function(rejoined: boolean)
                     task.wait(0.5);
                 end;
             end;
+
+            c:Disconnect();
+            c = nil;
 
             if (#StealableItems:GetChildren() <= 1 and #Natural:GetChildren() <= 0) or earlyStop then
                 finish(h, r);
