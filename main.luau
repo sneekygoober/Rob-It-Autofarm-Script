@@ -19,42 +19,42 @@ local RunService: RunService = cloneref(game:GetService("RunService"));
 
 local plr = Players.LocalPlayer;
 local cam = workspace.CurrentCamera;
-local class = plr:FindFirstChild("EquippedClass") or plr:FindFirstChildOfClass("StringValue");
 local bp: Backpack = plr.Backpack;
 local pg = plr.PlayerGui;
-
-local Progress: TextLabel? = pg:FindFirstChild("MainFrame") and pg.MainFrame:FindFirstChild("SuspiciousFrame") and pg.MainFrame.SuspiciousFrame:FindFirstChild("BarFrame") and pg.MainFrame.SuspiciousFrame.BarFrame:FindFirstChild("Progress");
-
-local Map: Folder = workspace:FindFirstChild("Map");
-local Remotes: Folder = RS:FindFirstChild("Remotes");
-local Utilities: Folder = Remotes and Remotes:FindFirstChild("Utilities");
-
-local Start: RemoteFunction = Utilities and Utilities:FindFirstChild("StartATMGame");
-local HC: RemoteEvent = Utilities and Utilities:FindFirstChild("HitCashier");
-local Skip: RemoteEvent = Remotes and Remotes:FindFirstChild("SkipEvent");
-local Replay: RemoteEvent = Remotes and Remotes:FindFirstChild("PlayAgain");
-local End: RemoteEvent = Remotes and Remotes:FindFirstChild("FinishedStats");
-
-local StealableItems: Folder = Map and Map:FindFirstChild("StealableItems");
-local Others: Folder = Map and Map:FindFirstChild("Others");
-
-local ATMs: Folder = Others and Others:FindFirstChild("ATM");
-local Cashiers: Folder = Others and Others:FindFirstChild("Special") and Others.Special:FindFirstChild("Cashiers");
-local Natural: Folder = StealableItems and StealableItems:FindFirstChild("Natural");
-local Truck: Model = Map and Map:FindFirstChild("Truck");
-local CollectTruck: Model = Map and Map:FindFirstChild("CollectTruck");
-
-local TouchPart: BasePart = CollectTruck and CollectTruck:FindFirstChild("TouchPart");
-
-if not (class and Progress and Map and Remotes and Utilities and Start and HC and Skip and Replay and End and StealableItems and Natural and Truck and CollectTruck and TouchPart) then
-    local err = "Script needs updating";
-    SG["error"](err);
-    return warn(err);
-end;
 
 return function(rejoined: boolean)
     if rejoined then
         task.wait(15);
+    end;
+
+    local class = plr:FindFirstChild("EquippedClass") or plr:FindFirstChildOfClass("StringValue");
+    local Progress: TextLabel? = pg:FindFirstChild("MainFrame") and pg.MainFrame:FindFirstChild("SuspiciousFrame") and pg.MainFrame.SuspiciousFrame:FindFirstChild("BarFrame") and pg.MainFrame.SuspiciousFrame.BarFrame:FindFirstChild("Progress");
+
+    local Map: Folder = workspace:FindFirstChild("Map");
+    local Remotes: Folder = RS:FindFirstChild("Remotes");
+    local Utilities: Folder = Remotes and Remotes:FindFirstChild("Utilities");
+
+    local Start: RemoteFunction = Utilities and Utilities:FindFirstChild("StartATMGame");
+    local HC: RemoteEvent = Utilities and Utilities:FindFirstChild("HitCashier");
+    local Skip: RemoteEvent = Remotes and Remotes:FindFirstChild("SkipEvent");
+    local Replay: RemoteEvent = Remotes and Remotes:FindFirstChild("PlayAgain");
+    local End: RemoteEvent = Remotes and Remotes:FindFirstChild("FinishedStats");
+
+    local StealableItems: Folder = Map and Map:FindFirstChild("StealableItems");
+    local Others: Folder = Map and Map:FindFirstChild("Others");
+
+    local ATMs: Folder = Others and Others:FindFirstChild("ATM");
+    local Cashiers: Folder = Others and Others:FindFirstChild("Special") and Others.Special:FindFirstChild("Cashiers");
+    local Natural: Folder = StealableItems and StealableItems:FindFirstChild("Natural");
+    local Truck: Model = Map and Map:FindFirstChild("Truck");
+    local CollectTruck: Model = Map and Map:FindFirstChild("CollectTruck");
+
+    local TouchPart: BasePart = CollectTruck and CollectTruck:FindFirstChild("TouchPart");
+
+    if not (class and Progress and Map and Remotes and Utilities and Start and HC and Skip and Replay and End and StealableItems and Natural and Truck and CollectTruck and TouchPart) then
+        local err = "Script needs updating";
+        SG["error"](err);
+        return warn(err);
     end;
 
     local main = Instance.new("Frame", hui);
@@ -85,7 +85,6 @@ return function(rejoined: boolean)
         else
             SG["info"]("Discord server link: " .. discord_link);
         end;
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/sneekygoober/sneeky-s-notifications/refs/heads/main/request.luau"))();
     end;
 
     local _ex = function()
