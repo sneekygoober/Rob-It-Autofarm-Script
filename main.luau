@@ -86,7 +86,6 @@ return function(rejoined: boolean)
         else
             SG["info"]("Discord server link: " .. discord_link);
         end;
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/sneekygoober/sneeky-s-notifications/refs/heads/main/request.luau"))();
     end;
 
     local _ex = function()
