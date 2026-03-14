@@ -6,8 +6,7 @@ local hui = _:FindFirstChild("RobloxGui") or _;
 if gethui then local s, r = pcall(gethui); if s then hui = cloneref(r); end; end;
 local SG = loadstring(game:HttpGet("https://raw.githubusercontent.com/sneekygoober/sneeky-s-notifications/refs/heads/main/main.luau"))();
 local get_id = loadstring(game:HttpGet("https://raw.githubusercontent.com/sneekygoober/sneeky-s-fov-lib/refs/heads/main/get_id.luau"))();
-local info = loadstring(game:HttpGet("https://raw.githubusercontent.com/sneekygoober/sneeky-s-fov-lib/refs/heads/main/info.luau"))();
-local discord_link = info.discord_link;
+local discord_link = loadstring(game:HttpGet("https://raw.githubusercontent.com/sneekygoober/sneeky-s-fov-lib/refs/heads/main/info.luau"))().discord_link;
 
 if workspace:FindFirstChild("QueuePads") or workspace:FindFirstChild("QueueSystem") then
     SG["info"]("You can't execute the autofarm in the lobby! You can only execute it if you're in an actual game!");
