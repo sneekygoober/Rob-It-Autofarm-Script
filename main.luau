@@ -168,6 +168,7 @@ return function(rejoined: boolean)
 
     End.OnClientEvent:Once(function()
         queue_on_teleport("loadstring(game:HttpGet(\"https://raw.githubusercontent.com/sneekygoober/Rob-It-Autofarm-Script/refs/heads/main/main.luau\"))()(true);");
+        task.wait();
         Replay:FireServer("Replay");
     end);
 
