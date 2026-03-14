@@ -54,7 +54,7 @@ end;
 
 return function(rejoined: boolean)
     if rejoined then
-        task.wait(20);
+        task.wait(15);
     end;
 
     local main = Instance.new("Frame", hui);
