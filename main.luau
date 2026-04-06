@@ -91,7 +91,8 @@ return function(rejoined: boolean)
         if exit then
             exit();
         else
-            plr:Kick("Exited");
+            game:Shutdown();
+            --plr:Kick("Exited");
         end;
     end;
 
